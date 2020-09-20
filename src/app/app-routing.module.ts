@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // redirect to `login`
-  { path: '**', component: LoginComponent },  // Wildcard route
+  { path: '**', redirectTo: '/login' },  // Wildcard route
 ];
 
 @NgModule({
