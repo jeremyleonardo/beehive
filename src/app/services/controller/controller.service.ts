@@ -33,6 +33,7 @@ export class ControllerService {
         this.response.status = 200;
         this.response.msg = "success";
         this.response.data = res.data;
+        this.router.navigate(['/dashboard']);
 
         subject.next(this.response);
 
@@ -50,6 +51,29 @@ export class ControllerService {
   public logout(): void {
     this.storageService.clear();
     this.router.navigate(['/auth']);
+  }
+
+  public getViconList(): Observable<any> {
+    var subject = new Subject<any>();
+    this.apiService.getViconScheduleMyclass(this.storageService.getItem('session')).subscribe(
+      res => {
+
+        this.response.status = 200;
+        this.response.msg = "success";
+        this.response.data = res.data;
+        this.storageService.setItem('vicon_schedule', JSON.stringify(res.data));
+
+        subject.next(this.response);
+
+      },
+      error => {
+        // this.response = this.responseService.generateError(error);
+        // subject.next(this.response);
+        subject.next(error);
+      }
+
+    );
+    return subject.asObservable();
   }
 
 }

@@ -20,14 +20,30 @@ export class ApiService {
     const body = {
       'Username': username,
       'Password': password
-    }
-    return this.http.post<any>(`${origin}${this.netlifyRoute}/loginMyclass`, body, this.getHeaders())
+    };
+    return this.http.post<any>(`${origin}${this.netlifyRoute}/loginMyclass`, body, this.getJsonHeaders())
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  public getViconScheduleMyclass(session: string): Observable<any> {
+    const body = `?Cookie=${session}`;
+    return this.http.get<any>(`${origin}${this.netlifyRoute}/getViconScheduleMyclass${body}`, this.getHeaders())
       .pipe(
         catchError(this.handleError)
       );
   }
 
   private getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded"
+      })
+    };
+  }
+
+  private getJsonHeaders() {
     return {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
