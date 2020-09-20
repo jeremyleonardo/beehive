@@ -10,11 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './services/api/api.service';
 import { ControllerService } from './services/controller/controller.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

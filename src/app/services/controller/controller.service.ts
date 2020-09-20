@@ -2,6 +2,7 @@ import { StorageService } from './../storage/storage.service';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, Observer } from 'rxjs';
 import { ApiService } from '../api/api.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class ControllerService {
   constructor(
     private apiService: ApiService,
     private storageService: StorageService,
+    private router: Router,
   ) { }
 
   public login(username: string, password: string): Observable<any> {
@@ -43,6 +45,11 @@ export class ControllerService {
 
     );
     return subject.asObservable();
+  }
+
+  public logout(): void {
+    this.storageService.clear();
+    this.router.navigate(['/auth']);
   }
 
 }

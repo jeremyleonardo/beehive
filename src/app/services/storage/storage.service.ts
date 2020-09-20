@@ -45,4 +45,11 @@ export class StorageService {
 		}
 	}
 
+	clear() {
+		// Hanya yang melalui function ini yang bisa dideteksi change ny, gunakan utk remove
+
+		localStorage.clear();
+		this.storageSub.next('removed');
+	}
+
 }

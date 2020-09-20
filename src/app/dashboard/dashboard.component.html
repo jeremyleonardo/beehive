@@ -1,0 +1,28 @@
+<div class="main-container">
+    <header class="header">
+        <div class="branding">
+            <a [routerLink]="['/dashboard']">
+                <span class="title">
+                    <clr-icon shape="node"></clr-icon>
+                    Beehive
+                </span>
+            </a>
+        </div>
+    </header>
+    <div class="content-container">
+        <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
+            <a clrVerticalNavLink routerLink="./video-conference" routerLinkActive="active">
+                <clr-icon clrVerticalNavIcon shape="video-camera"></clr-icon>
+                Video Conference
+            </a>
+            <div class="nav-divider"></div>
+            <a clrVerticalNavLink (click)="logout()">
+                <clr-icon clrVerticalNavIcon shape="logout"></clr-icon>
+                Logout
+            </a>
+        </clr-vertical-nav>
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
