@@ -7,15 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  collapsed: boolean = true;
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  logout(){
-    
   }
 
 }

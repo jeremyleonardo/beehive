@@ -11,7 +11,11 @@
     </header>
     <div class="content-container">
         <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="collapsed">
-            <a clrVerticalNavLink routerLink="./video-conference" routerLinkActive="active">
+            <a clrVerticalNavLink routerLink="/dashboard" routerLinkActive="active">
+                <clr-icon clrVerticalNavIcon shape="dashboard"></clr-icon>
+                Dashboard
+            </a>
+            <a clrVerticalNavLink routerLink="/video-conference" routerLinkActive="active">
                 <clr-icon clrVerticalNavIcon shape="video-camera"></clr-icon>
                 Video Conference
             </a>
@@ -22,7 +26,7 @@
             </a>
         </clr-vertical-nav>
         <div class="content-area">
-            <router-outlet></router-outlet>
+            <ng-content></ng-content>
         </div>
     </div>
 </div>

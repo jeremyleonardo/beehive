@@ -1,0 +1,32 @@
+<app-sidebar>
+    <div>
+        <span>Video Conference</span>&nbsp;&nbsp;&nbsp;
+        <button (click)="getViconSchedule()" class="btn btn-outline btn-sm">
+            <clr-icon shape="refresh"></clr-icon>&nbsp;
+            Get / Refresh Data
+        </button>
+    </div>
+    <clr-datagrid>
+        <clr-dg-column>Date</clr-dg-column>
+        <clr-dg-column>Time</clr-dg-column>
+        <clr-dg-column>Mode</clr-dg-column>
+        <clr-dg-column>Class</clr-dg-column>
+        <clr-dg-column>Course</clr-dg-column>
+        <clr-dg-column>Action</clr-dg-column>
+    
+        <clr-dg-row *ngFor="let vicon of viconSchedule">
+            <clr-dg-cell>{{vicon.DisplayStartDate}}</clr-dg-cell>
+            <clr-dg-cell>{{vicon.StartTime}} - {{vicon.EndTime}}</clr-dg-cell>
+            <clr-dg-cell>{{vicon.DeliveryMode}}</clr-dg-cell>
+            <clr-dg-cell>{{vicon.ClassCode}} - {{vicon.SsrComponentDescription}}</clr-dg-cell>
+            <clr-dg-cell>{{vicon.CourseCode}} - {{vicon.CourseTitleEn}}</clr-dg-cell>
+            <clr-dg-cell>
+                <a *ngIf="vicon.MeetingUrl != '-'" [href]="vicon.MeetingUrl" target="_blank">
+                    <button class="btn btn-primary btn-sm" >JOIN</button>
+                </a>
+            </clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{viconSchedule.length}} Vicons (Please refresh data if it's less than 10 vicons)</clr-dg-footer>
+    </clr-datagrid>
+</app-sidebar>
