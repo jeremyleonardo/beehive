@@ -33,7 +33,9 @@ export class StorageService {
 	}
 
 	getItem(key: string): string {
-		return atob(localStorage.getItem(btoa(key)));
+		if (localStorage.getItem(btoa(key)))
+			return atob(localStorage.getItem(btoa(key)));
+		else return null;
 	}
 
 	removeItem(key: string) {
