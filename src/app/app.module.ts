@@ -7,6 +7,9 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from './services/api/api.service';
+import { ControllerService } from './services/controller/controller.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ClarityModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    ControllerService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../services/api/api.service';
+import { ControllerService } from '../services/controller/controller.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +11,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   form: FormGroup;
+  loadingCount: number = 0;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private controllerService: ControllerService,
+  ) {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -22,7 +28,10 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+      this.loadingCount++;
+      this.controllerService.login(this.form.value.username, this.form.value.password).subscribe(response => {
+        this.loadingCount--;
+      })
     }
   }
 

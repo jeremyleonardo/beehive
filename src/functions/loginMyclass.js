@@ -26,11 +26,18 @@ exports.handler = async (event) => {
             console.error(errors);
             throw new Error('An error occured');
         }
-        console.log('RESPONSE:');
-        console.log(response);
-        console.log(response.data);
-        console.log(response.headers['set-cookie']);
-        return formattedResponse(200, { cookie: response.headers['set-cookie'] });
+        
+        return formattedResponse(200, { cookies: response.headers['set-cookie'], data: response.data });
+        // return sample:
+        // {
+        // "cookies":
+        // [
+        //   'ASP.NET_SessionId=dgasdasdsuumnxpvuls; path=/; HttpOnly; SameSite=Lax',
+        //   'ARRAffinity=7254a15345354ad76076415670ca9c4cf4a65f1d2870as634a8;Path=/;HttpOnly;Domain=myclass.apps.binus.ac.id'
+        // ],
+        // "data": { Status: true, Message: 'Login Success', URL: '/Home/Index' }
+        // }
+
     } catch (err) {
         console.error(err);
         return formattedResponse(500, { error: 'An error occured' });
