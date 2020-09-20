@@ -33,7 +33,7 @@ export class StorageService {
 	}
 
 	getItem(key: string): string {
-		return localStorage.getItem(btoa(key));
+		return atob(localStorage.getItem(btoa(key)));
 	}
 
 	removeItem(key: string) {
