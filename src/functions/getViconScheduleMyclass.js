@@ -24,7 +24,7 @@ exports.handler = async (event) => {
             data: body,
         });
         if (response.status != 200 || response.statusText != 'OK') {
-            console.error(errors);
+            console.log(errors);
             throw new Error('An error occured');
         }
 
@@ -65,7 +65,7 @@ exports.handler = async (event) => {
         // }
 
     } catch (err) {
-        console.error(err);
+        console.log(err);
         return formattedResponse(500, { error: 'An error occured' });
     }
 };
