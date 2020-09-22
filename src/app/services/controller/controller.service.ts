@@ -26,9 +26,10 @@ export class ControllerService {
       res => {
 
         const cookies: string[] = res.cookies;
-        const session: string = cookies[0].split(';')[0];
+        const myclassSession: string = cookies[0].split(';')[0];
         this.storageService.setItem('username', username);
-        this.storageService.setItem('session', session);
+        this.storageService.setItem('myclass_session', myclassSession);
+        this.storageService.setItem('myclass_session_iat', this.getCurrentDateTime());
 
         this.response.status = 200;
         this.response.msg = "success";
@@ -55,7 +56,7 @@ export class ControllerService {
 
   public getViconList(): Observable<any> {
     var subject = new Subject<any>();
-    this.apiService.getViconScheduleMyclass(this.storageService.getItem('session')).subscribe(
+    this.apiService.getViconScheduleMyclass(this.storageService.getItem('myclass_session')).subscribe(
       res => {
 
         this.response.status = 200;
@@ -74,6 +75,38 @@ export class ControllerService {
 
     );
     return subject.asObservable();
+  }
+
+  public getCurrentDateTime(): string {
+
+    var date = new Date();
+    var aaaa = date.getFullYear();
+    var gg: any = date.getDate();
+    var mm: any = (date.getMonth() + 1);
+
+    if (gg < 10)
+      gg = "0" + gg;
+
+    if (mm < 10)
+      mm = "0" + mm;
+
+    var cur_day = aaaa + "-" + mm + "-" + gg;
+
+    var hours: any = date.getHours()
+    var minutes: any = date.getMinutes()
+    var seconds: any = date.getSeconds();
+
+    if (hours < 10)
+      hours = "0" + hours;
+
+    if (minutes < 10)
+      minutes = "0" + minutes;
+
+    if (seconds < 10)
+      seconds = "0" + seconds;
+
+    return cur_day + " " + hours + ":" + minutes + ":" + seconds;
+
   }
 
 }
