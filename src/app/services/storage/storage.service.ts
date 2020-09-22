@@ -6,6 +6,16 @@ import { Subject, Observable } from 'rxjs';
 })
 export class StorageService {
 
+	/*
+	|| 
+	|| storage keys:
+	|| - myclass_session
+	|| - myclass_iat
+	|| - vicon_schedule
+	|| - username
+	|| 
+	*/
+
 	constructor(
 	) { }
 
