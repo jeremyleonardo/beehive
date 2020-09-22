@@ -14,7 +14,6 @@ export class GuestGuard implements CanActivate {
 	canActivate(
 		next: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-		console.log(this.storageService.getItem('username'))
 		if (this.storageService.getItem('username')) {
 			this.router.navigate(['/dashboard']);
 			return false;
