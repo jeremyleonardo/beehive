@@ -1,5 +1,9 @@
 # Beehive
 
+![beehive](https://github.com/jeremyleonardo/beehive/assets/58095255/6b12b845-0161-4cb2-b4ef-aa4f19a68108)
+
+<img width="1612" alt="Screenshot 2024-02-13 at 6 18 33 PM" src="https://github.com/jeremyleonardo/beehive/assets/58095255/eacbdb51-80cd-46c3-bc23-38dc8e3cb23c">
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
 
 ## Development server
